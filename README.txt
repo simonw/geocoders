@@ -8,7 +8,8 @@ Code for accessing various geocoding web services with an ultra simple API:
 The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
 the string can be geocoded, and (None, (None, None)) if it cannot.
 
-Currently supported: Google Geocoder, Yahoo! Geocoder, and Yahoo! Placemaker.
+Currently supported: Google Geocoder, Yahoo! Geocoder, Yahoo! Placemaker and
+GeoNames.
 
 Google:
 
@@ -19,7 +20,7 @@ Google:
 >>> geocode('oneuth')
 (u'South, Bloomfield, NY 14469, USA', (-77.5385449999999, 42.865267000000003))
 
-Yahoo:
+Yahoo!:
 
 >>> from geocoders.yahoo import geocoder
 >>> geocode = geocoder('YAHOO-API-KEY')
@@ -40,3 +41,11 @@ Yahoo! Placemaker:
 While Yahoo! Placemaker isn't strictly designed as a geocoder, in practice it
 can be useful for things like "did you mean location X" in a regular search
 engine.
+
+GeoNames:
+
+>>> from geocoders.geonames import geocoder
+>>> geocode('new york')
+(u'New York', (40.714269100000003, -74.005972900000003))
+>>> geocode('oneuth')
+(None, (None, None))
