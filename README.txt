@@ -5,6 +5,9 @@ Code for accessing various geocoding web services with an ultra simple API:
 
     name, (lat, lon) = geocode('london')
 
+The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
+the string can be geocoded, and (None, (None, None)) if it cannot.
+
 Currently supported: Google Geocoder, Yahoo! Placemaker
 
 Google:
@@ -25,5 +28,6 @@ Yahoo! Placemaker:
 >>> geocode('oneuth')
 (None, (None, None))
 
-The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
-the string can be geocoded, and (None, (None, None)) if it cannot.
+While Yahoo! Placemaker isn't strictly designed as a geocoder, in practice it
+can be useful for things like "did you mean location X" in a regular search
+engine.
