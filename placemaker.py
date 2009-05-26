@@ -1,6 +1,8 @@
 from utils import make_nsfind, ET, partial2
 import urllib
 
+# http://developer.yahoo.com/geo/placemaker/guide/api_docs.html
+
 def geocode(q, api_key):
     find = make_nsfind({
         'ns': 'http://wherein.yahooapis.com/v1/schema'

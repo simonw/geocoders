@@ -1,6 +1,8 @@
 import urllib
 from utils import simplejson, partial2
 
+# http://code.google.com/apis/maps/documentation/geocoding/index.html
+
 def geocode(q, api_key):
     json = simplejson.load(urllib.urlopen(
         'http://maps.google.com/maps/geo?' + urllib.urlencode({
