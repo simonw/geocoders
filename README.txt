@@ -8,8 +8,8 @@ Code for accessing various geocoding web services with an ultra simple API:
 The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
 the string can be geocoded, and (None, (None, None)) if it cannot.
 
-Currently supported: Google Geocoder, Yahoo! Geocoder, Yahoo! Placemaker and
-GeoNames.
+Currently supported: Google Geocoder, Yahoo! Geocoder, Yahoo! Placemaker,
+GeoNames and Multimap.
 
 Google:
 
@@ -49,3 +49,12 @@ GeoNames:
 (u'New York', (40.714269100000003, -74.005972900000003))
 >>> geocode('oneuth')
 (None, (None, None))
+
+Multimap:
+
+>>> from geocoders.multimap import geocoder
+>>> geocode = geocoder('MULTIMAP-API-KEY')
+>>> geocode('new york')
+('New York, State of New York, United States', ('43.00035', '-75.49990'))
+>>> geocode('oneuth')
+('Omeath, Louth', ('54.08790', '-6.26070'))
