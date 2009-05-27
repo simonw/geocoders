@@ -15,7 +15,7 @@ def geocode(q, api_key):
     ))
     try:
         lon, lat = json['Placemark'][0]['Point']['coordinates'][:2]
-    except KeyError, IndexError:
+    except (KeyError, IndexError):
         return None, (None, None)
     name = json['Placemark'][0]['address']
     return name, (lat, lon)
