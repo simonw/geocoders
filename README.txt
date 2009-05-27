@@ -16,7 +16,7 @@ Google:
 >>> from geocoders.google import geocoder
 >>> geocode = geocoder('GOOGLE-API-KEY')
 >>> geocode('new york')
-(u'New York, NY, USA', (-73.986951000000005, 40.756053999999999))
+(u'New York, NY, USA', (40.756053999999999, -73.986951000000005))
 >>> geocode('oneuth')
 (u'South, Bloomfield, NY 14469, USA', (-77.5385449999999, 42.865267000000003))
 
