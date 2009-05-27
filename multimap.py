@@ -13,7 +13,7 @@ def geocode(q, api_key):
     try:
         lon = json['result_set'][0]['point']['lon']
         lat = json['result_set'][0]['point']['lat']
-    except KeyError, IndexError:
+    except (KeyError, IndexError):
         return None, (None, None)
     name = json['result_set'][0]['address']['display_name']
     return name, (lat, lon)
