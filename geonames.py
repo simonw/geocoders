@@ -20,3 +20,6 @@ def geocode(q):
     if place['adminName1'] and place['name'] != place['adminName1']:
         name += ', ' + place['adminName1']
     return name, (place['lat'], place['lng'])
+
+# No API key required, but let's fulfil the contract anyway
+geocoder = lambda x: geocode
