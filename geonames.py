@@ -1,4 +1,4 @@
-from utils import simplejson
+from utils import simplejson, geocoder_factory
 import urllib
 
 # http://www.geonames.org/export/geonames-search.html
@@ -22,4 +22,4 @@ def geocode(q):
     return name, (place['lat'], place['lng'])
 
 # No API key required, but let's fulfil the contract anyway
-geocoder = lambda x: geocode
+geocoder = geocoder_factory(geocode, takes_api_key = False)

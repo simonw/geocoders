@@ -36,9 +36,23 @@ def fix_ns(xpath, nsdict=None):
     return xpath
 
 def partial2(fn):
+    # No longer used - we now use geocoder_factory instead
     def inner1(arg2):
         def inner2(arg1):
             return fn(arg1, arg2)
         return inner2
     return inner1
 
+def geocoder_factory(fn, takes_api_key=True):
+    def make_geocoder(api_key = None, lonlat = False):
+        def geocoder(q):
+            args = [q]
+            if takes_api_key:
+                args.append(api_key)
+            name, coords = fn(*args)
+            if lonlat:
+                return name, (coords[1], coords[0])
+            else:
+                return name, coords
+        return geocoder
+    return make_geocoder

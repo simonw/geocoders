@@ -1,4 +1,4 @@
-from utils import make_nsfind, ET, partial2
+from utils import make_nsfind, ET, geocoder_factory
 import urllib
 
 # http://developer.yahoo.com/geo/placemaker/guide/api_docs.html
@@ -24,4 +24,4 @@ def geocode(q, api_key):
         lon = float(find(place, 'ns:centroid/ns:longitude').text)
         return name, (lat, lon)
 
-geocoder = partial2(geocode)
+geocoder = geocoder_factory(geocode)

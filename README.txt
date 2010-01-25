@@ -44,7 +44,7 @@ engine.
 
 GeoNames:
 
->>> from geocoders.geonames import geocoder
+>>> from geocoders.geonames import geocode # No need for a geocoder factory
 >>> geocode('new york')
 (u'New York', (40.714269100000003, -74.005972900000003))
 >>> geocode('oneuth')
@@ -58,3 +58,25 @@ Multimap:
 ('New York, State of New York, United States', ('43.00035', '-75.49990'))
 >>> geocode('oneuth')
 ('Omeath, Louth', ('54.08790', '-6.26070'))
+
+Reversing the order
+-------------------
+
+Some libraries use (longitude, latitude) co-ordinate pairs instead of the 
+(latitude, longitude) returned by the geocode functions. The geocoder factory 
+functions all take an optional lonlat=True argument if you need this 
+behaviour. Some examples:
+
+Google:
+
+>>> from geocoders.google import geocoder
+>>> geocode = geocoder('GOOGLE-API-KEY', lonlat = True)
+>>> geocode('new york')
+(u'New York, NY, USA', (-74.005972900000003, 40.714269100000003))
+
+GeoNames:
+
+>>> from geocoders.geonames import geocoder # Using geocoder factory
+>>> geocode = geocoder(lonlat = True)
+>>> geocode('new york')
+(u'New York', (-74.005972900000003, 40.714269100000003))

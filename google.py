@@ -1,5 +1,5 @@
 import urllib
-from utils import simplejson, partial2
+from utils import simplejson, geocoder_factory
 
 # http://code.google.com/apis/maps/documentation/geocoding/index.html
 
@@ -20,4 +20,4 @@ def geocode(q, api_key):
     name = json['Placemark'][0]['address']
     return name, (lat, lon)
 
-geocoder = partial2(geocode)
+geocoder = geocoder_factory(geocode)
