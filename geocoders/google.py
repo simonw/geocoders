@@ -1,23 +1,22 @@
 import urllib
 from utils import simplejson, geocoder_factory
 
-# http://code.google.com/apis/maps/documentation/geocoding/index.html
+# https://developers.google.com/maps/documentation/geocoding/
 
-def geocode(q, api_key):
+
+def geocode(q, api_key=None):
     json = simplejson.load(urllib.urlopen(
-        'http://maps.google.com/maps/geo?' + urllib.urlencode({
-            'q': q,
-            'output': 'json',
-            'oe': 'utf8',
+        'http://maps.googleapis.com/maps/api/geocode/json?' + urllib.urlencode({
+            'address': q,
             'sensor': 'false',
-            'key': api_key
         })
     ))
     try:
-        lon, lat = json['Placemark'][0]['Point']['coordinates'][:2]
+        lon = json['results'][0]['geometry']['location']['lng']
+        lat = json['results'][0]['geometry']['location']['lat']
     except (KeyError, IndexError):
         return None, (None, None)
-    name = json['Placemark'][0]['address']
+    name = json['results'][0]['formatted_address']
     return name, (lat, lon)
 
 geocoder = geocoder_factory(geocode)
