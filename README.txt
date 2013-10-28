@@ -9,7 +9,7 @@ The geocode functions return (unicode_place_name, (float_lat, float_lon)) if
 the string can be geocoded, and (None, (None, None)) if it cannot.
 
 Currently supported: Google Geocoder, Yahoo! Geocoder, Yahoo! Placemaker,
-GeoNames and Multimap.
+GeoNames, Multimap, and Nominatim.
 
 Google:
 
@@ -58,6 +58,16 @@ Multimap:
 ('New York, State of New York, United States', ('43.00035', '-75.49990'))
 >>> geocode('oneuth')
 ('Omeath, Louth', ('54.08790', '-6.26070'))
+
+Nominatim:
+
+>>> from geocoders.nominatim import geocoder
+>>> geocode = geocoder('EMAIL-ADDRESS')
+>>> geocode('new york')
+('New York, United States of America, North America', ('40.7305991', '-73.9865812'))
+>>> geocode('oneuth')
+(None, (None, None))
+
 
 Reversing the order
 -------------------

@@ -35,14 +35,6 @@ def fix_ns(xpath, nsdict=None):
         xpath = xpath.replace('%s:' % ns, '{%s}' % url)
     return xpath
 
-def partial2(fn):
-    # No longer used - we now use geocoder_factory instead
-    def inner1(arg2):
-        def inner2(arg1):
-            return fn(arg1, arg2)
-        return inner2
-    return inner1
-
 def geocoder_factory(fn, takes_api_key=True):
     def make_geocoder(api_key = None, lonlat = False):
         def geocoder(q):
